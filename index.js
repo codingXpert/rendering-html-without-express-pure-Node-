@@ -8,7 +8,7 @@ function requestHandler(req , res) {
     console.log(req.url);
 
 
-fs.readFile('index.html' , function(res , err , data){
+fs.readFile('./home.html' , function(err , data){
     if(err){
         console.log('Error' , err);
         return res.end('<h1>Error</h1>')
@@ -18,7 +18,7 @@ fs.readFile('index.html' , function(res , err , data){
 }
 
 //creating server
-const server = http.createServer();
+const server = http.createServer(requestHandler);
 
 server.listen(port , function(err){
     if(err){
